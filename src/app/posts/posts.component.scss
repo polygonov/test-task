@@ -1,0 +1,22 @@
+li {
+  list-style-type: none; /* Убираем маркеры */
+}
+
+.selected {
+  border: 3px solid black;
+}
+
+.green {
+  background: green;
+}
+
+.red {
+  background: red;
+}
+
+.info{
+  padding: 1rem;
+  border: lavender 3px solid;
+  margin: 0.7rem 0;
+  text-align: center;
+}

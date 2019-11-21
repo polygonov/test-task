@@ -1,0 +1,53 @@
+<div class = "container">
+  <button class="btn btn-block" (click)="addPost()">
+    Add post
+  </button>
+  <div class="info">
+    <p><strong>Information:</strong></p>
+    <p>All blocks: {{postService.info.allBlocks}}</p>
+    <p>Selected blocks: {{postService.info.selectedBlocks}}</p>
+    <p>Selected green blocks: {{postService.info.selectedGreen}}</p>
+    <p>Selected red blocks: {{postService.info.selectedRed}}</p>
+  </div>
+</div>
+
+<ul *ngIf="postService.posts.length; else noPosts">
+
+  <div class="alert alert-danger" *ngIf="postService.confirm.slouldConfirm">
+    <p>Are you sure to delete block {{postService.confirm.confirmId + 1}}?</p>
+    <button class="btn btn-primary"
+            (click)="postService.confirm.isConfirm=true;
+                     deletePost(postService.confirm.confirmId)"
+    >Ok</button>
+    <button class="btn btn-primary"
+            (click)="postService.confirm.isConfirm=false;
+                     postService.confirm.slouldConfirm=false;
+                     postService.confirm.confirmId=null"
+    >Cancel</button>
+  </div>
+
+  <li *ngFor="let post of postService.posts; let i = index">
+    <div
+      class="card"
+      [class.selected]="post.selected"
+      [ngClass]="{
+        red: post.value === 1,
+        green: post.value === 2
+      }"
+      (dblclick)="changeValue(post.id)"
+      (click)="select(post.id)"
+
+    >
+    <span>
+      <strong>{{ i+1 }}</strong>
+      {{post.text}}
+    </span>
+
+      <button class="btn btn-primary"(click)="deletePost(post.id)">&times;</button>
+    </div>
+  </li>
+</ul>
+
+<ng-template #noPosts>
+  <p>No posts now!</p>
+</ng-template>
