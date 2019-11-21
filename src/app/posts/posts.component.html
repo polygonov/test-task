@@ -10,7 +10,7 @@
     <p>Selected red blocks: {{postService.info.selectedRed}}</p>
   </div>
 </div>
-
+<span id="top"></span>
 <ul *ngIf="postService.posts.length; else noPosts">
 
   <div class="alert alert-danger" *ngIf="postService.confirm.slouldConfirm">
@@ -24,6 +24,7 @@
                      postService.confirm.slouldConfirm=false;
                      postService.confirm.confirmId=null"
     >Cancel</button>
+
   </div>
 
   <li *ngFor="let post of postService.posts; let i = index">

@@ -42,7 +42,7 @@ export class PostService {
   removePost(id: number) {
     const idx = this.posts.findIndex(t => t.id === id)
     if(this.posts[idx].value > 0 && !this.confirm.isConfirm) {
-      location.href = "#";
+      location.href = "#top";
       this.confirm.slouldConfirm = true
       this.confirm.confirmId = idx
     } else {
@@ -86,7 +86,7 @@ export class PostService {
   }
 
   updateInfo(){
-    console.log(this.posts)
+    //console.log(this.posts)
 
     this.info.allBlocks = 0
     this.info.selectedBlocks = 0
